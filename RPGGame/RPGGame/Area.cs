@@ -9,16 +9,10 @@ using System.Windows.Controls;
 
 namespace RPGGame
 {
-    public class DrawTable
+    public class Area
     {
         FoxDraw foxDraw;
-
-        public void DrawMap(FoxDraw foxDraw)
-        {
-
-            this.foxDraw = foxDraw;
-
-            var wallList = new List<Point>()
+        public static List<Point> wallList = new List<Point>()
             {
                 new Point ( 150,0 ),
                 new Point ( 250,0 ),
@@ -64,6 +58,10 @@ namespace RPGGame
                 new Point ( 150,500 ),
                 new Point ( 250,500 ),
             };
+
+        public void DrawMap(FoxDraw foxDraw)
+        {
+            this.foxDraw = foxDraw;
 
             for (int i = 0; i < 10; i++)
             {
