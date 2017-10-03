@@ -22,16 +22,9 @@ namespace RPGGame
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
+            DrawTable drawTable = new DrawTable(); 
 
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    foxDraw.AddImage("./Assets/floor.png",i*50,j*50); 
-                }
-            }
-
-            //foxDraw.AddImage("./Assets/boss.png", 50, 50); // add images with FoxDraw like this
+            drawTable.DrawMap(foxDraw);
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e) // handling pressing keys, for moving your hero around
@@ -46,6 +39,6 @@ namespace RPGGame
                 Console.WriteLine("To the right!");
             }
         }
-
     }
+
 }

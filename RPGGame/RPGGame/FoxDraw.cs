@@ -22,6 +22,10 @@ namespace GreenFox
             Canvas = canvas;
         }
 
+        public FoxDraw()
+        {
+        }
+
         public void BackgroundColor(Color color)
         {
             Canvas.Background = new SolidColorBrush(color);
