@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GreenFox;
-
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace RPGGame
 {
@@ -13,7 +14,8 @@ namespace RPGGame
         public static FoxDraw foxDraw;
         public static int startingHeroX = 0;
         public static int startingHeroY = 0;
-
+        private Canvas Canvas { get; set; }
+        
         //private static List<string[]> board = new List<string[]>()
         //{
         //    new string[] {"floor", "floor", "floor", "wall", "floor", "wall", "floor", "floor", "floor", "floor"},
@@ -28,7 +30,7 @@ namespace RPGGame
         //    new string[] {"floor", "floor", "floor", "wall", "floor", "wall", "wall", "floor", "floor", "floor"}
 
         //};
-        
+
 
         public void Drawhero(FoxDraw foxDraw)
         {
@@ -39,25 +41,29 @@ namespace RPGGame
 
         public void Left()
         {
-            foxDraw.AddImage("./Assets/hero-left.png", startingHeroX - 50, startingHeroY);
+            ((Image) foxDraw.UIList[153]).Source = new BitmapImage(new Uri("./Assets/hero-left.png", UriKind.Relative));
+            foxDraw.SetPosition(foxDraw.UIList[153], startingHeroX - 50, startingHeroY);
             startingHeroX -= 50;           
         }
 
         public void Right()
         {
-            foxDraw.AddImage("./Assets/hero-right.png", startingHeroX + 50, startingHeroY);
+            ((Image)foxDraw.UIList[153]).Source = new BitmapImage(new Uri("./Assets/hero-right.png", UriKind.Relative));
+            foxDraw.SetPosition(foxDraw.UIList[153], startingHeroX + 50, startingHeroY);
             startingHeroX += 50;
         }
 
         public void Up()
-        { 
-            foxDraw.AddImage("./Assets/hero-up.png", startingHeroX, startingHeroY - 50);
+        {
+            ((Image)foxDraw.UIList[153]).Source = new BitmapImage(new Uri("./Assets/hero-up.png", UriKind.Relative));
+            foxDraw.SetPosition(foxDraw.UIList[153], startingHeroX, startingHeroY - 50);
             startingHeroY -= 50;
         }
 
         public void Down()
         {
-            foxDraw.AddImage("./Assets/hero-down.png", startingHeroX, startingHeroY + 50);
+            ((Image)foxDraw.UIList[153]).Source = new BitmapImage(new Uri("./Assets/hero-down.png", UriKind.Relative));
+            foxDraw.SetPosition(foxDraw.UIList[153], startingHeroX, startingHeroY + 50);
             startingHeroY += 50;
         }
     }
