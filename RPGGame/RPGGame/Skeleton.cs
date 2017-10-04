@@ -12,12 +12,10 @@ namespace RPGGame
     {
         public static FoxDraw foxDraw;
         Random randomSkeleton = new Random();
-        public static int startingHeroX = 50;
-        public static int startingHeroY = 50;
-        //private static int boardsize = 50;
-        //private Canvas Canvas { get; set; }
+        public static int startingSkeletonX = 50;
+        public static int startingSkeletonY = 50;
 
-        private static List<bool[]> skeletonMatrix = new List<bool[]>
+        public static List<bool[]> skeletonMatrix = new List<bool[]>
         {
             new bool[] { false,false,false,false,false,false,false,false,false,false,false,false },
             new bool[] { false, false, true, true, false, true, false, true, true, true, true, false },
@@ -41,12 +39,12 @@ namespace RPGGame
             {
                 int x = randomSkeleton.Next(1, 11);
                 int y = randomSkeleton.Next(1, 11);
-                if (skeletonMatrix[y][x]==true)
+                if (skeletonMatrix[y][x] == true)
                 {
-                    foxDraw.AddImage("./Assets/skeleton.png", startingHeroX * x, startingHeroY * y);
+                    foxDraw.AddImage("./Assets/skeleton.png", startingSkeletonX * x, startingSkeletonY * y);
                     noOfSkeleton++;
                     skeletonMatrix[y][x] = false;
-                }                
+                }
             } while (noOfSkeleton < 3);
         }
     }
