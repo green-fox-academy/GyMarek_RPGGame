@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Skeleton.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Area.cs" />
+    <Compile Include="Character.cs" />
     <Compile Include="FoxDraw.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -121,6 +123,9 @@
     <Resource Include="Assets\wall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

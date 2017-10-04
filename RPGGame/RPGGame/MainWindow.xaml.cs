@@ -20,15 +20,19 @@ namespace RPGGame
     {
         FoxDraw foxDraw;
         Hero hero;
+        Skeleton skeleton;
+
 
         public MainWindow()
         {
-            InitializeComponent();
-            Area drawTable = new Area();
+            InitializeComponent();            
             hero = new Hero();
+            skeleton = new Skeleton();
             foxDraw = new FoxDraw(canvas);
-            drawTable.DrawMap(foxDraw);
+            Area.DrawMap(foxDraw);
             hero.Drawhero(foxDraw);
+            skeleton.Drawskeleton(foxDraw);
+            
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e) // handling pressing keys, for moving your hero around

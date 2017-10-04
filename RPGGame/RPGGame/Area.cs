@@ -11,69 +11,50 @@ namespace RPGGame
 {
     public class Area
     {
-        FoxDraw foxDraw;
-        public static List<Point> wallList = new List<Point>()
-            {
-                new Point ( 150,0 ),
-                new Point ( 250,0 ),
-                new Point ( 150,50 ),
-                new Point ( 250,50 ),
-                new Point ( 350,50 ),
-                new Point ( 400,50 ),
-                new Point ( 50,100 ),
-                new Point ( 100,100 ),
-                new Point ( 150,100 ),
-                new Point ( 250,100 ),
-                new Point ( 350,100 ),
-                new Point ( 400,100 ),
-                new Point ( 250,150 ),
-                new Point ( 0,200 ),
-                new Point ( 50,200 ),
-                new Point ( 100,200 ),
-                new Point ( 150,200 ),
-                new Point ( 250,200 ),
-                new Point ( 300,200 ),
-                new Point ( 350,200 ),
-                new Point ( 400,200 ),
-                new Point ( 50,250 ),
-                new Point ( 150,250 ),
-                new Point ( 400,250 ),
-                new Point ( 50,300 ),
-                new Point ( 150,300 ),
-                new Point ( 250,300 ),
-                new Point ( 300,300 ),
-                new Point ( 400,300 ),
-                new Point ( 250,350 ),
-                new Point ( 300,350 ),
-                new Point ( 400,350 ),
-                new Point ( 50,400 ),
-                new Point ( 100,400 ),
-                new Point ( 150,400 ),
-                new Point ( 400,400 ),
-                new Point ( 150,450 ),
-                new Point ( 250,450 ),
-                new Point ( 300,450 ),
-                new Point ( 400,450 ),
-                new Point ( 50,500 ),
-                new Point ( 150,500 ),
-                new Point ( 250,500 ),
-            };
+        private static int boardsize = 50;
 
-        public void DrawMap(FoxDraw foxDraw)
+        private static List<bool[]> matrix = new List<bool[]>
         {
-            this.foxDraw = foxDraw;
-
-            for (int i = 0; i < 10; i++)
+            new bool[] { false,false,false,false,false,false,false,false,false,false,false,false },
+            new bool[] { false, true, true, true, false, true, false, true, true, true, true, false },
+            new bool[] { false, true, true, true, false, true, false, true, false, false, true, false },
+            new bool[] { false, true, false, false, false, true, false, true, false, false, true, false },
+            new bool[] { false, true, true, true, true, true, false, true, true, true, true, false },
+            new bool[] { false, false, false, false, false, true, false, false, false, false, true, false},
+            new bool[] { false, true, false, true, false, true, true, true, true, false, true, false },
+            new bool[] { false, true, false, true, false, true, false, false, true, false, true, false },
+            new bool[] { false, true, true, true, true, true, false, false, true, true, true, false },
+            new bool[] { false, true, false, false, false, true, true, true, true, false, true, false },
+            new bool[] { false, true, true, true, false, true, false, false, true, true, true, false },
+            new bool[] { false,false,false,false,false,false,false,false,false,false,false,false }
+        };
+        public static List<bool[]> Matrix
+        {
+            get
             {
-                for (int j = 0; j < 11; j++)
-                {
-                    foxDraw.AddImage("./Assets/floor.png", i * 50, j * 50);
-                }
+                return matrix;
             }
+        }
 
-            foreach (Point point in wallList)
+        public static void DrawMap(FoxDraw foxDraw)
+        {
+            int y = 0;
+            int x = 0;
+            for (int i = 1; i < matrix.Count - 1; i++)
             {
-                foxDraw.AddImage("./Assets/wall.png", point.X, point.Y);
+                y = i * boardsize;
+                for (int j = 1; j < matrix.Count - 1; j++)
+                {
+                    x = j * boardsize;
+                    if (matrix[i][j] == true)
+                    {
+                        foxDraw.AddImage("./Assets/floor.png", x, y);
+                    }
+                    else
+                    {
+                        foxDraw.AddImage("./Assets/wall.png", x, y);
+                    }
+                }
             }
         }
     }
